@@ -7,13 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 //6º Adapter
 class PokeAdapter(
-    var pokeList:List<PokeItemResponse> = emptyList(),
+    private var pokeList:MutableList<PokeItemResponse> = mutableListOf(),
     private val onItemSelected: (String) -> Unit
 ):
     RecyclerView.Adapter<PokeViewHolder>() {
 
     fun updateList(pokeList: List<PokeItemResponse>) {
-        this.pokeList = pokeList
+        this.pokeList.clear()
+        this.pokeList.addAll(pokeList)
+        notifyDataSetChanged()
+    }
+    fun add(pokemon: PokeItemResponse) {
+        this.pokeList.add(pokemon)
         notifyDataSetChanged()
     }
 
@@ -24,7 +29,7 @@ class PokeAdapter(
 
     override fun onBindViewHolder(viewholder: PokeViewHolder, position: Int) {
         viewholder.bind(pokeList[position], onItemSelected)
-    //val item = pokeList[position]
+        //val item = pokeList[position]
         //holder.bind(item)
     }
 

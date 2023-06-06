@@ -11,13 +11,13 @@ class PokeViewHolder(view: View):RecyclerView.ViewHolder(view) {
 
     private val binding = ItemPokeBinding.bind(view)
 
-   /* fun bind(image: String) {
-        Log.d("PokePrueba", "Loading image: $image")
-        Picasso.get().load(image).into(binding.ivPoke)
-    }*/
-   fun bind(pokeItemResponse: PokeItemResponse, onItemSelected: (String) -> Unit) {
+    /* fun bind(image: String) {
+         Log.d("PokePrueba", "Loading image: $image")
+         Picasso.get().load(image).into(binding.ivPoke)
+     }*/
+    fun bind(pokeItemResponse: PokeItemResponse, onItemSelected: (String) -> Unit) {
 
-       Picasso.get().load(pokeItemResponse.sprites.url).into(binding.ivPoke)
+        Picasso.get().load(pokeItemResponse.sprites.url).into(binding.ivPoke)
 
-   }
+    }
 }

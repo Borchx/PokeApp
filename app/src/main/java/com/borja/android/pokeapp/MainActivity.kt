@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: PokeAdapter
     private lateinit var retrofit: Retrofit
+    private lateinit var apiService: APIService
     private var pokeImages = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         //ERROR
-        adapter = PokeAdapter(emptyList()) { selectedItem ->
+        adapter = PokeAdapter() { selectedItem ->
             // Código para manejar la selección del elemento
         }
         //ERROR
@@ -102,11 +103,12 @@ class MainActivity : AppCompatActivity() {
             Log.d("Nombre", "response $myResponse")
             if (myResponse.isSuccessful) {
                 //Log.i("Borchx", "funciona :)")
-                val response: PokeResponse? = myResponse.body()
+                val response: PokeItemResponse? = myResponse.body()
                 if (response != null) {
                     Log.i("Nombre", response.toString())
                     runOnUiThread { //corre fuera de la corretuna, en el hilo principal
-                        adapter.updateList(response.pokemon)
+
+                        adapter.add(response)
                     }
                 }
             }else {
