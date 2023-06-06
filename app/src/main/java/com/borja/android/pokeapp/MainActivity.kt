@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
 
 
     // Hacer pruebas con abra o pikachu
+    // En el LogCat muestra la url de la ruta, y existe
+    //pero luego no se sale, creo que es un problema con el adapter...
     private fun searchByName(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse = retrofit.create(APIService::class.java).getPokemon("pokemon/$query")
