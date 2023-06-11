@@ -28,7 +28,7 @@ class PokeAdapter(
     }
 
     override fun onBindViewHolder(viewholder: PokeViewHolder, position: Int) {
-        viewholder.bind(pokeList[position], onItemSelected)
+        viewholder.bind(pokeList[position],onItemSelected)
         //val item = pokeList[position]
         //holder.bind(item)
     }
